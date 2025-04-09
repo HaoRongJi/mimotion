@@ -6,7 +6,6 @@ import random
 import re
 import sys
 import time
-import pytz
 
 import requests
 
@@ -225,12 +224,13 @@ def main(_user, _passwd, min_1, max_1):
     # response = requests.get(url, headers=headers).json()
     # t = str(response['unixtime'])+'000'
     # return t
-def get_time():
-        utc_now = datetime.datetime.utcnow()
-        beijing_tz = pytz.timezone('Asia/Shanghai')
-        beijing_now = utc_now.replace(tzinfo=pytz.utc).astimezone(beijing_tz)
-        t = int(beijing_now.timestamp() * 1000)
-        return t
+def get_time(): 
+# 获取当前时间的Unix时间戳
+    timestamp = time.time() 
+# 打印时间戳
+    print("当前时间的Unix时间戳是：", timestamp)
+    t = int(timestamp * 1000)
+    return t
 
 
 # 获取app_token
